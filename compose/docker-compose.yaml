@@ -30,6 +30,7 @@ services:
       schema_file: /app/schema/backend.sql
 
   mysql:
+    container_name: mysql
     image: docker.io/mysql:8.0
     ports:
       - 3306:3306

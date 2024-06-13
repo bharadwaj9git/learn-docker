@@ -35,8 +35,14 @@ services:
       - 3306:3306
     environment:
       MYSQL_ROOT_PASSWORD: "ExpenseApp@1"
-
+    networks:
+      - common
 
   sleep:
     image: docker.io/rkalluru/d79-schema-loader
     entrypoint: sleep 10000
+    networks:
+      - common
+
+networks:
+  common:

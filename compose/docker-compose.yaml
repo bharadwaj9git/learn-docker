@@ -3,6 +3,7 @@ name: expense
 services:
   frontend:
     container_name: frontend
+    pull_policy: always
     image: docker.io/rkalluru/d79-frontend
     depends_on:
       - backend

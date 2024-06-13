@@ -39,4 +39,4 @@ services:
 
   sleep:
     image: docker.io/rkalluru/d79-schema-loader
-    command: sleep 10000
+    entrypoint: sleep 10000

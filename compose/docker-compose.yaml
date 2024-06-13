@@ -2,13 +2,17 @@ name: expense
 
 services:
   frontend:
+    container_name: frontend
     image: docker.io/rkalluru/d79-frontend
     depends_on:
       - backend
     ports:
       - 80:80
+    networks:
+      - common
 
   backend:
+    container_name: backend
     image: docker.io/rkalluru/d79-backend
     depends_on:
       - mysql
@@ -17,8 +21,11 @@ services:
       - 8080:8080
     environment:
       DB_HOST: "mysql"
+    networks:
+      - common
 
   schema:
+    container_name: schema-loader
     image: docker.io/rkalluru/d79-schema-loader
     depends_on:
       - mysql
@@ -28,6 +35,8 @@ services:
       login_host: "mysql"
       app_repo: https://github.com/raghudevopsb79/expense-backend
       schema_file: /app/schema/backend.sql
+    networks:
+      - common
 
   mysql:
     container_name: mysql
@@ -39,11 +48,6 @@ services:
     networks:
       - common
 
-  sleep:
-    image: docker.io/rkalluru/d79-schema-loader
-    entrypoint: sleep 10000
-    networks:
-      - common
-
 networks:
   common:
+

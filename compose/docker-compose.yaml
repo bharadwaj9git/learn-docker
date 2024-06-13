@@ -37,4 +37,6 @@ services:
       MYSQL_ROOT_PASSWORD: "ExpenseApp@1"
 
 
-
+  sleep:
+    image: docker.io/rkalluru/d79-schema-loader
+    command: sleep 10000
